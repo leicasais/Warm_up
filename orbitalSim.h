@@ -31,7 +31,7 @@ typedef struct
 typedef struct 
 {
     float timeStep;
-    OrbitalBody_t * arr_OrbBodies[NUM_BODIES]
+    OrbitalBody_t (* arr_OrbBodies)[NUM_BODIES]
 
 }OrbitalSim_t;
 

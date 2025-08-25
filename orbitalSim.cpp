@@ -66,13 +66,18 @@ void configureAsteroid(OrbitalBody *body, float centerMass)
  * @param float The time step
  * @return The orbital simulation
  */
+
+
+
+
 OrbitalSim *constructOrbitalSim(float timeStep)
 {
-    OrbitalSim_t orbital = {
-
+    OrbitalSim_t orbital{
+        timeStep;
     }
-
-
+    for(int i=0; i<NUM_BODIES; i++){
+        (orbital.arrBodies)[i] = (OrbitalBody_t*) calloc(1,sizeof(OrbitalBody_t));
+    }
 
     return NULL; // This should return your orbital sim
 }
