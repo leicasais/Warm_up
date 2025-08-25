@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "orbitalsim::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-orbitalsim-Debug-342901b264d4bb22c82b.json",
+					"jsonFile" : "target-orbitalsim-Debug-97d6e000e72783beddfe.json",
 					"name" : "orbitalsim",
 					"projectIndex" : 0
 				}
@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/leila/Documents/Algoritmos/1. Warm Up - Starter Code/build",
-		"source" : "/home/leila/Documents/Algoritmos/1. Warm Up - Starter Code"
+		"build" : "/Users/sofinasello/Warm_up/build",
+		"source" : "/Users/sofinasello/Warm_up"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 6
+		"minor" : 8
 	}
 }

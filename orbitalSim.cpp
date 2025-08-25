@@ -68,7 +68,9 @@ void configureAsteroid(OrbitalBody *body, float centerMass)
  */
 OrbitalSim *constructOrbitalSim(float timeStep)
 {
-    // Your code goes here...
+    OrbitalSim_t orbital = {
+
+    }
 
 
 

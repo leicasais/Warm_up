@@ -8,25 +8,32 @@
 #ifndef ORBITALSIM_H
 #define ORBITALSIM_H
 
+#include "raymath.h"
+
+#define NUM_BODIES 10
 /**
  * @brief Orbital body definition
  */
-struct OrbitalBody
+typedef struct 
 {
-    // Fill in your code here...
+    Vector3 pos;
+    Vector3 vel;
+    Vector3 acc;
+    float mass;
+    float radius;
+    Color color;
 
-
-};
+} OrbitalBody_t;
 
 /**
  * @brief Orbital simulation definition
  */
-struct OrbitalSim
+typedef struct 
 {
-    // Fill in your code here...
+    float timeStep;
+    OrbitalBody_t * arr_OrbBodies[NUM_BODIES]
 
-
-};
+}OrbitalSim_t;
 
 OrbitalSim *constructOrbitalSim(float timeStep);
 void destroyOrbitalSim(OrbitalSim *sim);

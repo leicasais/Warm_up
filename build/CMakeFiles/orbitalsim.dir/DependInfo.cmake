@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/leila/Documents/Algoritmos/1. Warm Up - Starter Code/main.cpp" "CMakeFiles/orbitalsim.dir/main.cpp.o" "gcc" "CMakeFiles/orbitalsim.dir/main.cpp.o.d"
-  "/home/leila/Documents/Algoritmos/1. Warm Up - Starter Code/orbitalSim.cpp" "CMakeFiles/orbitalsim.dir/orbitalSim.cpp.o" "gcc" "CMakeFiles/orbitalsim.dir/orbitalSim.cpp.o.d"
-  "/home/leila/Documents/Algoritmos/1. Warm Up - Starter Code/view.cpp" "CMakeFiles/orbitalsim.dir/view.cpp.o" "gcc" "CMakeFiles/orbitalsim.dir/view.cpp.o.d"
+  "/Users/sofinasello/Warm_up/main.cpp" "CMakeFiles/orbitalsim.dir/main.cpp.o" "gcc" "CMakeFiles/orbitalsim.dir/main.cpp.o.d"
+  "/Users/sofinasello/Warm_up/orbitalSim.cpp" "CMakeFiles/orbitalsim.dir/orbitalSim.cpp.o" "gcc" "CMakeFiles/orbitalsim.dir/orbitalSim.cpp.o.d"
+  "/Users/sofinasello/Warm_up/view.cpp" "CMakeFiles/orbitalsim.dir/view.cpp.o" "gcc" "CMakeFiles/orbitalsim.dir/view.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
