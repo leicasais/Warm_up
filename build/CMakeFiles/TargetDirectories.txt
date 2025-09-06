@@ -1,3 +1,0 @@
-/Users/sofinasello/Warm_up/Warm_up/build/CMakeFiles/orbitalsim.dir
-/Users/sofinasello/Warm_up/Warm_up/build/CMakeFiles/edit_cache.dir
-/Users/sofinasello/Warm_up/Warm_up/build/CMakeFiles/rebuild_cache.dir

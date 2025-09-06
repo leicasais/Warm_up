@@ -8,9 +8,9 @@
 #ifndef ORBITALSIM_H
 #define ORBITALSIM_H
 
+#include "raylib.h"
 #include "raymath.h"
 
-#define NUM_BODIES 10
 /**
  * @brief Orbital body definition
  */
@@ -31,13 +31,17 @@ typedef struct
 typedef struct 
 {
     float timeStep;
-    OrbitalBody_t (* arr_OrbBodies)[NUM_BODIES]
+    float elapsedTime;
+    int numBodies;
+    OrbitalBody_t * bodies;
 
 }OrbitalSim_t;
 
-OrbitalSim *constructOrbitalSim(float timeStep);
-void destroyOrbitalSim(OrbitalSim *sim);
 
-void updateOrbitalSim(OrbitalSim *sim);
+
+OrbitalSim_t *constructOrbitalSim(float timeStep);
+void destroyOrbitalSim(OrbitalSim_t *sim);
+
+void updateOrbitalSim(OrbitalSim_t *sim);
 
 #endif

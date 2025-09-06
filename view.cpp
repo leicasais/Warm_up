@@ -85,7 +85,7 @@ bool isViewRendering(View *view)
  * @param view The view
  * @param sim The orbital sim
  */
-void renderView(View *view, OrbitalSim *sim)
+void renderView(View *view, OrbitalSim_t *sim)
 {
     UpdateCamera(&view->camera, CAMERA_FREE);
 
@@ -95,6 +95,20 @@ void renderView(View *view, OrbitalSim *sim)
     BeginMode3D(view->camera);
 
     // Fill in your 3D drawing code here:
+    
+    for (int i = 0; i < sim->numBodies; i++)
+    {
+        Vector3 scaledPos = Vector3Scale(sim->bodies[i].pos, 1e-11f);
+        float scaledRadius = 0.005f * logf(sim->bodies[i].radius);
+
+        if (scaledRadius > 0.01f){
+            DrawSphere(scaledPos, scaledRadius, sim->bodies[i].color);
+        }
+        else{
+            DrawPoint3D(scaledPos, sim->bodies[i].color);
+        }
+        
+    }
 
 
 
@@ -102,7 +116,7 @@ void renderView(View *view, OrbitalSim *sim)
     EndMode3D();
 
     // Fill in your 2D drawing code here:
-
+    DrawText(getISODate(sim->elapsedTime), 10, 30, 20, RAYWHITE);
 
 
     EndDrawing();

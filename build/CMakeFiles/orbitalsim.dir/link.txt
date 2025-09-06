@@ -1,1 +1,0 @@
-/usr/bin/c++ -g -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -fsanitize=address CMakeFiles/orbitalsim.dir/main.cpp.o CMakeFiles/orbitalsim.dir/orbitalSim.cpp.o CMakeFiles/orbitalsim.dir/view.cpp.o -o orbitalsim  /opt/homebrew/lib/libraylib.dylib -framework IOKit -framework Cocoa -framework OpenGL

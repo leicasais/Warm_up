@@ -24,6 +24,6 @@ View *constructView(int fps);
 void destroyView(View *view);
 
 bool isViewRendering(View *view);
-void renderView(View *view, OrbitalSim *sim);
+void renderView(View *view, OrbitalSim_t *sim);
 
 #endif

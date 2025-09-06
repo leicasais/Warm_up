@@ -1,0 +1,14 @@
+# Ignorar la carpeta de compilación
+build/
+# Ignorar objetos intermedios
+*.o
+*.obj
+*.out
+*.exe
+*.log
+*.tmp
+# Archivos de CMake que no hacen falta
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
