@@ -1,20 +1,20 @@
 [
 {
-  "directory": "/Users/sofinasello/Warm_up/build",
-  "command": "/usr/bin/c++  -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -fsanitize=address -o CMakeFiles/orbitalsim.dir/main.cpp.o -c /Users/sofinasello/Warm_up/main.cpp",
-  "file": "/Users/sofinasello/Warm_up/main.cpp",
+  "directory": "/Users/sofinasello/Warm_up/Warm_up/build",
+  "command": "/usr/bin/c++  -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -fsanitize=address -o CMakeFiles/orbitalsim.dir/main.cpp.o -c /Users/sofinasello/Warm_up/Warm_up/main.cpp",
+  "file": "/Users/sofinasello/Warm_up/Warm_up/main.cpp",
   "output": "CMakeFiles/orbitalsim.dir/main.cpp.o"
 },
 {
-  "directory": "/Users/sofinasello/Warm_up/build",
-  "command": "/usr/bin/c++  -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -fsanitize=address -o CMakeFiles/orbitalsim.dir/orbitalSim.cpp.o -c /Users/sofinasello/Warm_up/orbitalSim.cpp",
-  "file": "/Users/sofinasello/Warm_up/orbitalSim.cpp",
+  "directory": "/Users/sofinasello/Warm_up/Warm_up/build",
+  "command": "/usr/bin/c++  -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -fsanitize=address -o CMakeFiles/orbitalsim.dir/orbitalSim.cpp.o -c /Users/sofinasello/Warm_up/Warm_up/orbitalSim.cpp",
+  "file": "/Users/sofinasello/Warm_up/Warm_up/orbitalSim.cpp",
   "output": "CMakeFiles/orbitalsim.dir/orbitalSim.cpp.o"
 },
 {
-  "directory": "/Users/sofinasello/Warm_up/build",
-  "command": "/usr/bin/c++  -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -fsanitize=address -o CMakeFiles/orbitalsim.dir/view.cpp.o -c /Users/sofinasello/Warm_up/view.cpp",
-  "file": "/Users/sofinasello/Warm_up/view.cpp",
+  "directory": "/Users/sofinasello/Warm_up/Warm_up/build",
+  "command": "/usr/bin/c++  -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -fsanitize=address -o CMakeFiles/orbitalsim.dir/view.cpp.o -c /Users/sofinasello/Warm_up/Warm_up/view.cpp",
+  "file": "/Users/sofinasello/Warm_up/Warm_up/view.cpp",
   "output": "CMakeFiles/orbitalsim.dir/view.cpp.o"
 }
 ]

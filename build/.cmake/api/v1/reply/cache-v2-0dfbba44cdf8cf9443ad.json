@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/sofinasello/Warm_up/build"
+			"value" : "/Users/sofinasello/Warm_up/Warm_up/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -491,7 +491,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/sofinasello/Warm_up/build/CMakeFiles/pkgRedirects"
+			"value" : "/Users/sofinasello/Warm_up/Warm_up/build/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -551,7 +551,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/sofinasello/Warm_up"
+			"value" : "/Users/sofinasello/Warm_up/Warm_up"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -1747,7 +1747,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/sofinasello/Warm_up/build"
+			"value" : "/Users/sofinasello/Warm_up/Warm_up/build"
 		},
 		{
 			"name" : "orbitalsim_IS_TOP_LEVEL",
@@ -1771,7 +1771,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/sofinasello/Warm_up"
+			"value" : "/Users/sofinasello/Warm_up/Warm_up"
 		},
 		{
 			"name" : "raylib_DIR",

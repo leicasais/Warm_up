@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/sofinasello/Warm_up/build",
-		"source" : "/Users/sofinasello/Warm_up"
+		"build" : "/Users/sofinasello/Warm_up/Warm_up/build",
+		"source" : "/Users/sofinasello/Warm_up/Warm_up"
 	},
 	"version" : 
 	{
