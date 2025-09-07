@@ -5,22 +5,8 @@
  * @copyright Copyright (c) 2022-2023
  */
 
-
-#define _USE_MATH_DEFINES // Habilita M_PI #define en Windows
-
-#include <stdlib.h>
-#include <math.h>
-#include "raylib.h"
-#include "raymath.h"
-
 #include "orbitalSim.h"
 #include "ephemerides.h"
-
-#define GRAVITATIONAL_CONSTANT 6.6743E-11F
-#define ASTEROIDS_MEAN_RADIUS 4E11F
-#define NUM_ASTEROIDS 500
-#define MIN_DISTANCE 1000
-
 /**
  * @brief Gets a uniform random value in a range
  *
@@ -28,9 +14,9 @@
  * @param max Maximum value
  * @return The random value
  */
-float getRandomFloat(float min, float max)
+presicion getRandomPresicion(presicion min, presicion max)
 {
-    return min + (max - min) * rand() / (float)RAND_MAX;
+    return min + (max - min) * rand() / presicion{RAND_MAX};
 }
 
 /**
@@ -42,27 +28,31 @@ float getRandomFloat(float min, float max)
 void configureAsteroid(OrbitalBody_t *body, float centerMass)
 {
     // Logit distribution
-    float x = getRandomFloat(0.001f, 0.999f); //Evito log(0)
-    float l = logf(x) - logf(1 - x) + 1;
+    presicion x = getRandomPresicion(presicion{0.001}, presicion{0.999}); //Evito log(0)
+    presicion l = std::log(x) - std::log(presicion{1} - x) + presicion{1};
 
     // https://mathworld.wolfram.com/DiskPointPicking.html
-    float r = ASTEROIDS_MEAN_RADIUS * sqrtf(fabsf(l));
-    float phi = getRandomFloat(0, 2.0F * (float)M_PI);
+    presicion r = ASTEROIDS_MEAN_RADIUS * std::sqrt(std::abs(l));
+    presicion phi = getRandomPresicion(presicion{0}, presicion{2.0} * presicion{M_PI});
 
     // Surprise!
     // phi = 0; // Fijar phi en 0 produce un patrón en espiral similar a Fibonacci !! :o
 
     // https://en.wikipedia.org/wiki/Circular_orbit#Velocity
-    float v = sqrtf(GRAVITATIONAL_CONSTANT * centerMass / r) * getRandomFloat(0.6F, 1.2F);
-    float vy = getRandomFloat(-1E2F, 1E2F);
+    presicion v  = std::sqrt(GRAVITATIONAL_CONSTANT * centerMass / r)
+             * getRandomPresicion(presicion{0.6}, presicion{1.2});
+    presicion vy = getRandomPresicion(presicion{-1E2}, presicion{1E2});
 
     // Fill in with your own fields:
-    body->mass = 1E12F;  // Typical asteroid weight: 1 billion tons
-    body->radius = 2E3F; // Typical asteroid radius: 2km
+    body->mass = presicion{1E12};  // Typical asteroid weight: 1 billion tons
+    body->radius = presicion{2E3}; // Typical asteroid radius: 2km
     body->color = GRAY;
-    body->pos = (Vector3){r * cosf(phi), 0, r * sinf(phi)};
-    body->vel = (Vector3){-v * sinf(phi), vy, v * cosf(phi)};
-    body->acc = (Vector3){0, 0, 0};
+    //Casteo a float por que rylib usa float para el render
+    body->pos = Vector3{static_cast<float>(r * std::cos(phi)),0.0f
+                , static_cast<float>(r * std::sin(phi))};
+    body->vel = Vector3{ static_cast<float>(-v * std::sin(phi)), static_cast<float>(vy),
+                static_cast<float>( v * std::cos(phi))};
+    body->acc = (Vector3){0.0f, 0.0f, 0.0f};
 }
 
 /**
@@ -81,7 +71,7 @@ OrbitalSim_t *constructOrbitalSim(float timeStep)
     if (!sim) return NULL;
     
     sim->timeStep = timeStep;
-    sim->elapsedTime = 0.0f;
+    sim->elapsedTime = presicion{0.0};
     sim->numBodies = SOLARSYSTEM_BODYNUM + NUM_ASTEROIDS;
     sim->bodies = (OrbitalBody_t *)malloc(sim->numBodies * sizeof(OrbitalBody_t)); //reservo memoria para los orbital bodies
     if (!sim->bodies) {
@@ -93,7 +83,7 @@ OrbitalSim_t *constructOrbitalSim(float timeStep)
     for (int i = 0; i < SOLARSYSTEM_BODYNUM; i++) {
         sim->bodies[i].pos = solarSystem[i].position;
         sim->bodies[i].vel = solarSystem[i].velocity;
-        sim->bodies[i].acc = (Vector3){0, 0, 0};
+        sim->bodies[i].acc = (Vector3){0.0f, 0.0f, 0.0f};
         sim->bodies[i].mass = solarSystem[i].mass;
         sim->bodies[i].radius = solarSystem[i].radius;
         sim->bodies[i].color = solarSystem[i].color;
@@ -131,15 +121,15 @@ Vector3 calculateGravitationalForce(const OrbitalBody_t *body1, const OrbitalBod
     // Calculo fuerza/m1 para evitar operaciones innecesarias 
 
     Vector3 r = Vector3Subtract(body2->pos, body1->pos); 
-    float distance = Vector3Length(r); 
+    presicion distance = Vector3Length(r); 
     
     // Evito dividir por cero
     if (distance < MIN_DISTANCE) { 
         return (Vector3){0, 0, 0}; 
     } 
     
-    float invDistance3 = 1.0f / (distance * distance * distance); // 1 / r^3 
-    float forceFactor = GRAVITATIONAL_CONSTANT * body2->mass * invDistance3; // 
+    presicion invDistance3 = presicion{1.0} / (distance * distance * distance); // 1 / r^3 
+    presicion forceFactor = GRAVITATIONAL_CONSTANT * body2->mass * invDistance3; // 
     
     return Vector3Scale(r, forceFactor); // Fuerza / m1 = G*m2 / r^3 
 }
@@ -157,7 +147,7 @@ void updateOrbitalSim(OrbitalSim_t *sim)
     for (int i = 0; i < sim->numBodies; i++) {
         Vector3 totalAccel = {0, 0, 0};
 
-        for (int j = 0; j < sim->numBodies; j++) {
+        for (int j = 0; j < (sim->numBodies -NUM_ASTEROIDS); j++) {
             if (i != j) {
                 Vector3 accel = calculateGravitationalForce(&sim->bodies[i], &sim->bodies[j]);
                 totalAccel = Vector3Add(totalAccel, accel);

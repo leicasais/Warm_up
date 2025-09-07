@@ -4,12 +4,18 @@
  * 
  * @copyright Copyright (c) 2022-2023
  */
+#ifndef LIBS_H
+#define LIBS_H
+//shared libraries
+#include "raylib.h"
 
+#endif
 #ifndef EPHEMERIDES_H
 #define EPHEMERIDES_H
 
-#include "raylib.h"
-#include "raymath.h"
+//specific libraries 
+#include <stdlib.h>
+#include <math.h>
 
 struct EphemeridesBody
 {
