@@ -12,6 +12,7 @@
 #endif
 #ifndef EPHEMERIDES_H
 #define EPHEMERIDES_H
+#define JUPITER_TOGGLE
 
 //specific libraries 
 #include <stdlib.h>
@@ -75,7 +76,11 @@ EphemeridesBody solarSystem[] = {
     },
     {
         "Jupiter",
+        #ifdef JUPITER_TOGGLE
         1898.18722E24F,
+        #else
+        1898000.18722E24F,
+        #endif
         69911E3F,
         BEIGE,
         {6.955554713494443E+11F, -1.444959769995748E+10F, -2.679620040967891E+11F},
