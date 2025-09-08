@@ -7,7 +7,7 @@
 
 #include "orbitalSim.h"
 #include "ephemerides.h"
-#define SYSTEM_TOGGLE        // Si está definido, se simulará el sistema solar. En caso de estarlo, se simulará Alfa Centauri
+#define SYSTEM_TOGGLE        
 
 /**
  * @brief Gets a uniform random value in a range
