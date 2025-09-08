@@ -1,14 +1,40 @@
-# Ignorar la carpeta de compilación
+# --- Carpetas de build (compilación) ---
 build/
-# Ignorar objetos intermedios
-*.o
-*.obj
-*.out
-*.exe
-*.log
-*.tmp
-# Archivos de CMake que no hacen falta
+out/
+bin/
+obj/
+
+# --- Archivos de CMake generados ---
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
 Makefile
+compile_commands.json
+
+# --- Archivos de compilación intermedios ---
+*.o
+*.obj
+*.out
+*.exe
+*.a
+*.lib
+*.dll
+*.so
+*.dylib
+
+# --- Archivos de logs / temporales ---
+*.log
+*.tmp
+*.swp
+*.swo
+
+# --- Archivos de IDEs ---
+# VSCode
+.vscode/
+# CLion / JetBrains
+.idea/
+cmake-build-*/
+
+# --- Archivos de sistema ---
+.DS_Store
+Thumbs.db
