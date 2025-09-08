@@ -9,14 +9,17 @@
 
 //shared libraries
 #include "raylib.h"
+#include "raymath.h"
 
 #endif
 
 #ifndef ORBITALSIMVIEW_H
 #define ORBITALSIMVIEW_H
+
 //Macros
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
+
 //libraries
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720

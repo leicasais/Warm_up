@@ -91,7 +91,7 @@ void renderView(View *view, OrbitalSim_t *sim)
     ClearBackground(BLACK);
     BeginMode3D(view->camera);
 
-    // Fill in your 3D drawing code here:
+    // 3D drawing code
     
     for (int i = 0; i < (sim->numBodies - NUM_ASTEROIDS); i++)
     {
@@ -109,7 +109,7 @@ void renderView(View *view, OrbitalSim_t *sim)
     DrawGrid(10, 10.0f);
     EndMode3D();
 
-    // 2D drawing code here
+    // 2D drawing code
     DrawFPS(10, 10);
     
     if (sim) {

@@ -51,5 +51,5 @@ Por ultimo hicimos un cambio en el archivo View.cpp en la funcion `renderView(..
 
 
 ## ...Bonus points...
+Ester egg: Fijar phi en 0 produce un patrón en espiral similar a Fibonacci. 
 
-[completar]
