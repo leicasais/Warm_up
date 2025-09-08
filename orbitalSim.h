@@ -15,15 +15,18 @@
 #ifndef ORBITALSIM_H
 #define ORBITALSIM_H
 
-//specific libraries
-#include "raymath.h"
 
 //Macros
 #define _USE_MATH_DEFINES // Habilita M_PI #define en Windows
 #define GRAVITATIONAL_CONSTANT 6.6743E-11F
 #define ASTEROIDS_MEAN_RADIUS 4E11F
-#define NUM_ASTEROIDS 500
+#define NUM_ASTEROIDS 10000
 #define MIN_DISTANCE 1000
+
+
+//specific libraries
+#include "raymath.h"
+#include <cmath>
 
 
 /**
