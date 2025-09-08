@@ -7,6 +7,8 @@
 
 #include "orbitalSim.h"
 #include "ephemerides.h"
+#define SYSTEM_TOGGLE
+
 /**
  * @brief Gets a uniform random value in a range
  *
@@ -69,6 +71,9 @@ OrbitalSim_t *constructOrbitalSim(float timeStep)
     
     sim->timeStep = timeStep;
     sim->elapsedTime = presicion{0.0};
+
+    #ifdef SYSTEM_TOGGLE
+    
     sim->numBodies = SOLARSYSTEM_BODYNUM + NUM_ASTEROIDS;
     sim->bodies = (OrbitalBody_t *)malloc(sim->numBodies * sizeof(OrbitalBody_t)); //reservo memoria para los orbital bodies
     if (!sim->bodies) {
@@ -92,6 +97,33 @@ OrbitalSim_t *constructOrbitalSim(float timeStep)
         configureAsteroid(&sim->bodies[i], centerMass);
     }
 
+    #else
+
+    sim->numBodies = ALPHACENTAURISYSTEM_BODYNUM + NUM_ASTEROIDS;
+    sim->bodies = (OrbitalBody_t *)malloc(sim->numBodies * sizeof(OrbitalBody_t));
+    if (!sim->bodies) {
+        free(sim);
+        return NULL;
+    }
+
+    // Inicializo el sistema Alpha Centauri
+    for (int i = 0; i < ALPHACENTAURISYSTEM_BODYNUM; i++) {
+        sim->bodies[i].pos = alphaCentauriSystem[i].position;
+        sim->bodies[i].vel = alphaCentauriSystem[i].velocity;
+        sim->bodies[i].acc = Vector3{0.0f, 0.0f, 0.0f};
+        sim->bodies[i].mass = alphaCentauriSystem[i].mass;
+        sim->bodies[i].radius = alphaCentauriSystem[i].radius;
+        sim->bodies[i].color = alphaCentauriSystem[i].color;
+    }
+
+    // Configuro los asteroides
+    float centerMass = alphaCentauriSystem[0].mass; // pongo el Sol como centro
+    for (int i = ALPHACENTAURISYSTEM_BODYNUM; i < sim->numBodies; i++) {
+    configureAsteroid(&sim->bodies[i], centerMass);
+    }
+
+    #endif
+    
     return sim; // This should return your orbital sim
 }
 
