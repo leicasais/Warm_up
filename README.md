@@ -51,5 +51,8 @@ Por ultimo hicimos un cambio en el archivo View.cpp en la funcion `renderView(..
 
 
 ## ...Bonus points...
-Ester egg: Fijar phi en 0 produce un patrón en espiral similar a Fibonacci. 
+Easter egg: Fijar phi en 0 produce un patrón en espiral similar a Fibonacci. 
+En ephemerides.h añadimos la macro JUPITER_TOGGLE para incluir la opción de aumentar 1000 veces la masa de Jupiter en la simulación. Si se deja el código tal cual como es presentado, no afectará a la simulación, pero si se comenta la declaración de la macro, se verá en la simulación como se destabiliza el sistema solar.
+En orbitalSim.cpp añadimos también la macro SYSTEM_TOGGLE para poder simular el sistema Alfa Centauri. Análogo a JUPITER_TOGGLE, si comentamos la declaración de la macro, se simulará Alfa Centauri y en el caso contrario, el sistema solar.
+
 
