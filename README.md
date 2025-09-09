@@ -2,7 +2,9 @@
 
 ## Integrantes del grupo y contribución al trabajo de cada integrante
 
-* [Nombre]: [contribución]
+* Sofia : La implementacion y funcionamiento del codigo principal. Evaluacion del adicoinal easter egg.
+* Leila : El apartado del README y sus pruebas.
+* Cristobal : Los adicionales restantes.
 
 [completar]
 
