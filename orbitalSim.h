@@ -17,6 +17,7 @@
 
 //specific libraries
 #include "raymath.h"
+#include <cmath>
 
 //Macros
 #define _USE_MATH_DEFINES // Habilita M_PI #define en Windows
