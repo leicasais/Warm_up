@@ -1,13 +1,13 @@
 /**
  * @brief Orbital simulation
- * @author Marc S. Ressl, Leila Casais, Sofía Nasello y Cristóbal Kramer
+ * @author Marc S. Ressl
  *
  * @copyright Copyright (c) 2022-2023
  */
 
 #include "orbitalSim.h"
 #include "ephemerides.h"
-#define SYSTEM_TOGGLE
+#define SYSTEM_TOGGLE        
 
 /**
  * @brief Gets a uniform random value in a range
@@ -36,6 +36,7 @@ void configureAsteroid(OrbitalBody_t *body, float centerMass)
     presicion phi = getRandomPresicion(presicion{0}, presicion{2.0} * presicion{M_PI});
 
     // Surprise!
+    // phi = 0; // Fijar phi en 0 produce un patrón en espiral similar a Fibonacci !! :o
 
     presicion v  = std::sqrt(GRAVITATIONAL_CONSTANT * centerMass / r)
              * getRandomPresicion(presicion{0.6}, presicion{1.2});
@@ -44,7 +45,7 @@ void configureAsteroid(OrbitalBody_t *body, float centerMass)
     body->mass = presicion{1E12};  // Typical asteroid weight: 1 billion tons
     body->radius = presicion{2E3}; // Typical asteroid radius: 2km
     body->color = GRAY;
-
+    
     //Casteo a float por que rylib usa float para el render
     body->pos = Vector3{static_cast<float>(r * std::cos(phi)),0.0f
                 , static_cast<float>(r * std::sin(phi))};
@@ -60,19 +61,21 @@ void configureAsteroid(OrbitalBody_t *body, float centerMass)
  * @return The orbital simulation
  */
 
+
+
+
 OrbitalSim_t *constructOrbitalSim(float timeStep)
 {
     OrbitalSim_t *sim = (OrbitalSim_t *)malloc(sizeof(OrbitalSim_t));
     if (!sim) return NULL;
-
+    
     sim->timeStep = timeStep;
     sim->elapsedTime = presicion{0.0};
 
     #ifdef SYSTEM_TOGGLE
-
+    
     sim->numBodies = SOLARSYSTEM_BODYNUM + NUM_ASTEROIDS;
-    sim->bodies = (OrbitalBody_t *)malloc(sim->numBodies * sizeof(OrbitalBody_t));
-//reservo memoria para los orbital bodies
+    sim->bodies = (OrbitalBody_t *)malloc(sim->numBodies * sizeof(OrbitalBody_t)); //reservo memoria para los orbital bodies
     if (!sim->bodies) {
         free(sim);
         return NULL;
@@ -120,8 +123,8 @@ OrbitalSim_t *constructOrbitalSim(float timeStep)
     }
 
     #endif
-
-    return sim;
+    
+    return sim; // This should return your orbital sim
 }
 
 /**
@@ -142,21 +145,21 @@ void destroyOrbitalSim(OrbitalSim_t *sim)
  * @brief Calculate gravitational force between two bodies
  */
 
-Vector3 calculateGravitationalForce(const OrbitalBody_t *body1, const OrbitalBody_t *body2)
-{
-    // Calculo fuerza/m1 para evitar operaciones innecesarias
-    Vector3 r = Vector3Subtract(body2->pos, body1->pos);
-    presicion distance = Vector3Length(r);
-
+Vector3 calculateGravitationalForce(const OrbitalBody_t *body1, const OrbitalBody_t *body2) 
+{ 
+    // Calculo fuerza/m1 para evitar operaciones innecesarias 
+    Vector3 r = Vector3Subtract(body2->pos, body1->pos); 
+    presicion distance = Vector3Length(r); 
+    
     // Evito dividir por cero
-    if (distance < MIN_DISTANCE) {
-        return (Vector3){0, 0, 0};
-    }
-
-    presicion invDistance3 = presicion{1.0} / (distance * distance * distance);
+    if (distance < MIN_DISTANCE) { 
+        return (Vector3){0, 0, 0}; 
+    } 
+    
+    presicion invDistance3 = presicion{1.0} / (distance * distance * distance); 
     presicion forceFactor = GRAVITATIONAL_CONSTANT * body2->mass * invDistance3;
-
-    return Vector3Scale(r, forceFactor); // Fuerza / m1 = G*m2 / r^3
+    
+    return Vector3Scale(r, forceFactor); // Fuerza / m1 = G*m2 / r^3 
 }
 
 /**
@@ -177,8 +180,8 @@ void updateOrbitalSim(OrbitalSim_t *sim)
                 Vector3 accel = calculateGravitationalForce(&sim->bodies[i], &sim->bodies[j]);
                 totalAccel = Vector3Add(totalAccel, accel);
             }
-        }
-
+        } 
+        
         sim->bodies[i].acc = totalAccel; // a = F/m
     }
 
@@ -188,7 +191,7 @@ void updateOrbitalSim(OrbitalSim_t *sim)
         //velocidad: v(n+1) = v(n) + a(n) * dt
         Vector3 deltaV = Vector3Scale(sim->bodies[i].acc, sim->timeStep);
         sim->bodies[i].vel = Vector3Add(sim->bodies[i].vel, deltaV);
-
+        
         //posicion: x(n+1) = x(n) + v(n+1) * dt
         Vector3 deltaX = Vector3Scale(sim->bodies[i].vel, sim->timeStep);
         sim->bodies[i].pos = Vector3Add(sim->bodies[i].pos, deltaX);

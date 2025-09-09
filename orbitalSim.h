@@ -1,6 +1,6 @@
-﻿/**
+/**
  * @brief Orbital simulation
- * @author Marc S. Ressl
+ * @author Marc S. Ressl, Leila Casais, Sofía Nasello y Cristóbal Kramer
  *
  * @copyright Copyright (c) 2022-2023
  */
@@ -17,7 +17,6 @@
 
 //specific libraries
 #include "raymath.h"
-#include <cmath>
 
 //Macros
 #define _USE_MATH_DEFINES // Habilita M_PI #define en Windows
@@ -31,9 +30,10 @@
  * @brief Orbital body definition
  */
 
-using presicion = double; // cambia el tipo de variable de los paraemtros que modifican a la fisica del programa
+using presicion = double;
+// cambia el tipo de variable de los paraemtros que modifican a la fisica del programa
 
-typedef struct 
+typedef struct
 {
     Vector3 pos;
     Vector3 vel;
@@ -47,7 +47,7 @@ typedef struct
 /**
  * @brief Orbital simulation definition
  */
-typedef struct 
+typedef struct
 {
     presicion timeStep;
     presicion elapsedTime;

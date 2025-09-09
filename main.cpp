@@ -1,6 +1,6 @@
-﻿/**
+/**
  * @brief Orbital simulation main module
- * @author Marc S. Ressl
+ * @author Marc S. Ressl, Leila Casais, Sofía Nasello y Cristóbal Kramer
  *
  * @copyright Copyright (c) 2022-2023
  */
@@ -13,7 +13,7 @@
 int main()
 {
     int fps = 60;                                 // Frames per second
-    float timeMultiplier = 100 * SECONDS_PER_DAY; // Simulation speed: 100 days per simulation second
+    float timeMultiplier = 100 * SECONDS_PER_DAY; //100 days per simulation second
     float timeStep = timeMultiplier / fps;
 
     OrbitalSim_t *sim = constructOrbitalSim(timeStep);
